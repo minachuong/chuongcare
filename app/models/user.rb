@@ -6,5 +6,4 @@ class User < ApplicationRecord
 
   has_many :careships
   has_many :patients, through: :careships
-
 end

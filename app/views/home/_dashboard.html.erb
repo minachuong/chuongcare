@@ -1,8 +1,10 @@
 <h1>Chuong Care Dashboard</h1>
 <p>Welcome back, <%= current_user.email %>!</p>
 
+<h3>Your Care Receivers</h3>
 <% if current_user.patients.count > 0 %>
-  <%= current_user.patients.first.first_name + " " + current_user.patients.first.last_name  %>
-<% else %>
-  <%= link_to 'New Careship', new_careship_path %>
+  <% for patient in current_user.patients %>
+    <p><%= patient.first_name + " " + patient.last_name  %></p>
+  <% end %>
 <% end %>
+  <p><%= link_to '+ Add Care Receiver?', new_patient_path %></p>
