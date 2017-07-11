@@ -7,4 +7,6 @@
     <p><%= patient.first_name + " " + patient.last_name  %></p>
   <% end %>
 <% end %>
-  <p><%= link_to '+ Add Care Receiver?', new_patient_path %></p>
+<p><%= link_to '+ Add Care Receiver?', new_patient_path %></p>
+
+<h3><%= current_user.patients.first.first_name + " " + current_user.patients.first.last_name  %>'s Daily Stats</h3>

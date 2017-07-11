@@ -25,9 +25,9 @@ class PatientsController < ApplicationController
   # POST /patients.json
   def create
     @patient = Patient.create(patient_params)
-    @patient.set_careship(current_user.id)
     respond_to do |format|
       if @patient.save
+        @patient.generate_careship(current_user.id)
         format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
         format.json { render :show, status: :created, location: @patient }
       else
