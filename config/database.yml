@@ -1,0 +1,19 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: chuongcare_development
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: chuongcare_test
+  pool: 5
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: chuongcare_production
+  password:
+

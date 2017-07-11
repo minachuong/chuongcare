@@ -1,0 +1,8 @@
+<h1>Chuong Care Dashboard</h1>
+<p>Welcome back, <%= current_user.email %>!</p>
+
+<% if current_user.patients.count > 0 %>
+  <%= current_user.patients.first.first_name + " " + current_user.patients.first.last_name  %>
+<% else %>
+  <%= link_to 'New Careship', new_careship_path %>
+<% end %>
