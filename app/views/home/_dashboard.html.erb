@@ -1,9 +1,13 @@
+<% if user_signed_in? %>
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% end %>
+
 <h1>Chuong Care Dashboard</h1>
 <p>Welcome back, <%= current_user.email %>!</p>
 
 <h3>Your Care Receivers</h3>
 <% if current_user.patients.count > 0 %>
-  <% for patient in current_user.patients %>
+  <% current_user.patients.each do |patient| %>
     <p><%= patient.first_name + " " + patient.last_name %></p>
   <% end %>
 <% end %>

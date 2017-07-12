@@ -1,5 +1,4 @@
 <% if user_signed_in? %>
-  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
   <%= render "home/dashboard" %>
 <% else %>
   <h1>Welcome to Chuong Care</h1>

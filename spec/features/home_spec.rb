@@ -28,8 +28,20 @@ RSpec.describe "LandingPages", type: :feature, js: true do
         click_button 'Sign up'
       end
       Then 'I am a user' do
-        expect(page).to have_content("Welcome back")
+        expect(page).to have_content("Chuong Care Dashboard")
       end
     end
   end
+
+  # context 'signing out' do
+  #   Steps 'signing out' do
+  #     When 'I sign out' do
+  #       click_link 'Sign Out'
+  #     end
+  #     Then 'I am not logged in' do
+  #       expect(page).to have_content("Welcome to Chuong Care")
+  #     end
+  #   end
+  # end
+
 end

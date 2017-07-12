@@ -1,5 +1,5 @@
 class Patient < ApplicationRecord
-  has_many :careships, inverse_of: :patient
+  has_many :careships
   has_many :users, through: :careships
 
   validates :first_name, presence: true
