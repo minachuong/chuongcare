@@ -6,32 +6,41 @@
 <%= link_to 'Share', share_care_receiver_path(@care_receiver) %> |
 <%= link_to 'Back', home_index_path %>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Share</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Share <%= @care_receiver.full_name %> with a Care Giver</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="form-control-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
+        <%= form_with(model: @care_receiver, url: share_care_receiver_path(@care_receiver)) do |form| %>
+          <% if @care_receiver.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@care_receiver.errors.count, "error") %> prohibited this care receiver from being saved:</h2>
+              <ul>
+              <% @care_receiver.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field form-group">
+              <%= form.label :email %> *<br>
+              <%= form.text_field :email %><br>
           </div>
-          <div class="form-group">
-            <label for="message-text" class="form-control-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+          <div class="modal-footer">
+            <div class="actions">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <%= form.submit %>
+            </div>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <% end %>
       </div>
     </div>
   </div>

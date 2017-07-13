@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :care_receivers do
     member do
-      get 'share'
+      patch 'share'
     end
   end
 
