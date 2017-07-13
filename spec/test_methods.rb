@@ -12,7 +12,7 @@ module TestMethods
 
   def log_in(email)
     visit '/'
-    click_link 'Sign In'
+    click_button 'Sign In'
     fill_in "user[email]", with: email
     fill_in "user[password]", with: "password"
     click_button 'Log in'

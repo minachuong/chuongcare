@@ -1,18 +1,39 @@
-<% if user_signed_in? %>
-  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-<% end %>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/">Chuong Care</a>
 
-<h1>Chuong Care Dashboard</h1>
-<p>Welcome, <%= current_user.email %>!</p>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-<h3>Your Care Receivers</h3>
-<% if current_user.care_receivers.count > 0 %>
-  <% current_user.care_receivers.each do |care_receiver| %>
-    <p><%= link_to "#{care_receiver.full_name}", care_receiver %></p>
-  <% end %>
-<% end %>
-<p><%= link_to '+ Add Care Receiver?', new_care_receiver_path %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <p>Welcome, <%= current_user.email %>!</p>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Dashboard</h1>
+      <h3>Your Care Receivers</h3>
+      <% if current_user.care_receivers.count > 0 %>
+        <% current_user.care_receivers.each do |care_receiver| %>
+          <p><%= link_to "#{care_receiver.full_name}", care_receiver %></p>
+        <% end %>
+      <% end %>
+      <p><%= link_to '+ Add Care Receiver?', new_care_receiver_path %></p>
 
-<% if current_user.care_receivers.count > 0 %>
-  <h3><%= current_user.care_receivers.first.first_name + " " + current_user.care_receivers.first.last_name  %>'s Daily Stats</h3>
-<% end %>
+      <% if current_user.care_receivers.count > 0 %>
+        <h3><%= current_user.care_receivers.first.first_name + " " + current_user.care_receivers.first.last_name  %>'s Daily Stats</h3>
+      <% end %>
+
+    </div>
+  </div>
+</div>
