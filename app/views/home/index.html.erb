@@ -4,13 +4,14 @@
   <div class="container">
     <div class="header">
       <ul class="nav nav-pills pull-right">
-        <li class="active"><%= link_to "Sign In", new_user_session_path %></li>
+        <%= render "devise/sessions/new" %>
       </ul>
     </div>
 
     <div class="jumbotron">
       <h1>Welcome to Chuong Care</h1>
       <p class="lead">Do the things to make caring easier.</p>
+      <p><button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#logIn" data-whatever="">Sign In</button></p>
       <p><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-success" %></p>
     </div>
 
