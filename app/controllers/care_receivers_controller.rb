@@ -1,5 +1,5 @@
 class CareReceiversController < ApplicationController
-  before_action :set_care_receiver, only: [:show, :edit, :update, :destroy]
+  before_action :set_care_receiver, only: [:show, :edit, :update, :share, :destroy]
 
   # GET /care_receivers
   # GET /care_receivers.json
@@ -26,8 +26,7 @@ class CareReceiversController < ApplicationController
   def create
     @care_receiver = CareReceiver.create(care_receiver_params)
     respond_to do |format|
-      if @care_receiver.save
-        @care_receiver.generate_careship(current_user.id)
+      if @care_receiver.save && @care_receiver.generate_careship(current_user.id)
         format.html { redirect_to @care_receiver, notice: 'CareReceiver was successfully created.' }
         format.json { render :show, status: :created, location: @care_receiver }
       else
@@ -43,6 +42,18 @@ class CareReceiversController < ApplicationController
     respond_to do |format|
       if @care_receiver.update(care_receiver_params)
         format.html { redirect_to @care_receiver, notice: 'CareReceiver was successfully updated.' }
+        format.json { render :show, status: :ok, location: @care_receiver }
+      else
+        format.html { render :edit }
+        format.json { render json: @care_receiver.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def share
+    respond_to do |format|
+      if @care_receiver.share
+        format.html { redirect_to @care_receiver, notice: 'CareReceiver was successfully shared.' }
         format.json { render :show, status: :ok, location: @care_receiver }
       else
         format.html { render :edit }
@@ -69,6 +80,7 @@ class CareReceiversController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def care_receiver_params
-      params.require(:care_receiver).permit(:first_name, :last_name)
+      params.permit(:id, :first_name, :last_name)
+      # params.require(:care_receiver).permit(:id, :first_name, :last_name)
     end
 end

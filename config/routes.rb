@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
   get 'home/index'
+  devise_for :users
 
-  resources :care_receivers
+  resources :care_receivers do
+    member do
+      get 'share'
+    end
+  end
+
   resources :careships
 
   root to: "home#index"

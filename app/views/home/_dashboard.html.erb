@@ -3,16 +3,15 @@
 <% end %>
 
 <h1>Chuong Care Dashboard</h1>
-<p>Welcome back, <%= current_user.email %>!</p>
+<p>Welcome, <%= current_user.email %>!</p>
 
 <h3>Your Care Receivers</h3>
 <% if current_user.care_receivers.count > 0 %>
   <% current_user.care_receivers.each do |care_receiver| %>
-    <p><%= care_receiver.first_name + " " + care_receiver.last_name %></p>
+    <p><%= link_to "#{care_receiver.full_name}", care_receiver %></p>
   <% end %>
 <% end %>
 <p><%= link_to '+ Add Care Receiver?', new_care_receiver_path %></p>
-<p><%= link_to 'Share Care Receiver?', new_care_receiver_path %></p>
 
 <% if current_user.care_receivers.count > 0 %>
   <h3><%= current_user.care_receivers.first.first_name + " " + current_user.care_receivers.first.last_name  %>'s Daily Stats</h3>
