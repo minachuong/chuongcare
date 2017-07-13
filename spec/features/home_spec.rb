@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'test_methods'
 
 RSpec.describe "LandingPages", type: :feature, js: true do
   context 'visiting the website for the first time' do
@@ -22,9 +23,9 @@ RSpec.describe "LandingPages", type: :feature, js: true do
         expect(page).to have_content("Sign up")
       end
       When 'register' do
-        fill_in "user[email]", with: "a@c.com"
-        fill_in "user[password]", with: "asdfasdf"
-        fill_in "user[password_confirmation]", with: "asdfasdf"
+        fill_in "user[email]", with: "a@a.com"
+        fill_in "user[password]", with: "password"
+        fill_in "user[password_confirmation]", with: "password"
         click_button 'Sign up'
       end
       Then 'I am a user' do
@@ -33,15 +34,25 @@ RSpec.describe "LandingPages", type: :feature, js: true do
     end
   end
 
-  # context 'signing out' do
-  #   Steps 'signing out' do
-  #     When 'I sign out' do
-  #       click_link 'Sign Out'
-  #     end
-  #     Then 'I am not logged in' do
-  #       expect(page).to have_content("Welcome to Chuong Care")
-  #     end
-  #   end
-  # end
+  context 'signing in and out' do
+    Steps 'signing in and out' do
+      Given 'I am an existing user and not signed in' do
+        create_user_in_ui("b@b.com")
+      end
+      When 'I sign in' do
+        click_link 'Sign In'
+        fill_in "user[email]", with: "b@b.com"
+        fill_in "user[password]", with: "password"
+        click_button 'Log in'
+      end
+      Then 'I can see my dashboard' do
+        expect(page).to have_content("Chuong Care Dashboard")
+      end
+      And 'I can sign out' do
+        click_link 'Sign Out'
+        expect(page).to have_content("Welcome to Chuong Care")
+      end
+    end
+  end
 
 end

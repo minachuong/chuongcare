@@ -53,7 +53,8 @@ class CareReceiversController < ApplicationController
 
   def share
     respond_to do |format|
-      if @care_receiver.share(care_receiver_params[:care_receiver][:email])
+      user_id = User.find_by_email(care_receiver_params[:care_receiver][:email]).id
+      if @care_receiver.generate_careship(user_id)
         format.html { redirect_to @care_receiver, notice: 'CareReceiver was successfully shared.' }
         format.json { render :show, status: :ok, location: @care_receiver }
       else
@@ -81,6 +82,7 @@ class CareReceiversController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def care_receiver_params
+      # actions_require_care_receiver = [:create]
       if params[:action] == "create"
         params.require(:care_receiver).permit(:id, :first_name, :last_name)
       else

@@ -3,7 +3,6 @@
 <%= @care_receiver.full_name %>
 
 <%= link_to 'Edit', edit_care_receiver_path(@care_receiver) %> |
-<%= link_to 'Share', share_care_receiver_path(@care_receiver) %> |
 <%= link_to 'Back', home_index_path %>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Share</button>
@@ -37,7 +36,7 @@
           <div class="modal-footer">
             <div class="actions">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <%= form.submit %>
+              <%= form.button "Share Care Receiver", class: "btn btn-primary" %>
             </div>
           </div>
         <% end %>
