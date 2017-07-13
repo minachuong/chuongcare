@@ -1,4 +1,4 @@
 class Careship < ApplicationRecord
   belongs_to :user
-  belongs_to :patient
+  belongs_to :care_receiver
 end

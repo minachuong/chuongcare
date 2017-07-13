@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get 'home/index'
 
-  resources :patients
+  resources :care_receivers
   resources :careships
 
   root to: "home#index"

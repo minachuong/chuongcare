@@ -2,8 +2,8 @@
 
 one:
   user: one
-  patient: one
+  care_receiver: one
 
 two:
   user: two
-  patient: two
+  care_receiver: two

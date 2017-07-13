@@ -1,6 +1,6 @@
-class CreatePatients < ActiveRecord::Migration[5.1]
+class CreateCareReceivers < ActiveRecord::Migration[5.1]
   def change
-    create_table :patients do |t|
+    create_table :care_receivers do |t|
       t.string :first_name
       t.string :last_name
 
