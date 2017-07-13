@@ -30,8 +30,11 @@ RSpec.describe "CareReceivers", type: :feature, js: true do
       Then "I can share that care receiver" do
         click_link "Share"
       end
-      And "" do
+      And "I provide the email address of the user I would like to share my care receiver to" do
 
+      end
+      Then "I have shared my care receiver" do
+         
       end
     end
   end
