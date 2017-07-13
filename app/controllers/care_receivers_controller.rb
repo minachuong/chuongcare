@@ -82,7 +82,7 @@ class CareReceiversController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def care_receiver_params
-      # actions_require_care_receiver = [:create]
+      # actions_require_care_receiver = ["create"]
       if params[:action] == "create"
         params.require(:care_receiver).permit(:id, :first_name, :last_name)
       else

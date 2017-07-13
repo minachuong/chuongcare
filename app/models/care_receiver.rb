@@ -13,9 +13,4 @@ class CareReceiver < ApplicationRecord
     return [self.first_name, self.last_name].join(" ")
   end
 
-  # def share(email)
-  #   share_to_user = User.find_by_email(email)
-  #   generate_careship(share_to_user.id)
-  #   return true
-  # end
 end

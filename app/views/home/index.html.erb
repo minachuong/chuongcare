@@ -1,7 +1,21 @@
 <% if user_signed_in? %>
   <%= render "home/dashboard" %>
 <% else %>
-  <h1>Welcome to Chuong Care</h1>
-  <%= link_to "Sign In", new_user_session_path %>
-  <%= link_to "Sign Up", new_user_registration_path %>
+  <div class="container">
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li class="active"><%= link_to "Sign In", new_user_session_path %></li>
+      </ul>
+    </div>
+
+    <div class="jumbotron">
+      <h1>Welcome to Chuong Care</h1>
+      <p class="lead">Do the things to make caring easier.</p>
+      <p><%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-success" %></p>
+    </div>
+
+    <div class="footer">
+      <p>&copy; MC 2017</p>
+    </div>
+  </div> <!-- /container -->
 <% end %>
