@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :careships
   has_many :care_receivers, through: :careships
+
+  has_many :daily_records
 end

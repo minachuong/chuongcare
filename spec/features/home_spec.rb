@@ -20,16 +20,16 @@ RSpec.describe "Home", type: :feature, js: true do
         click_link 'Sign Up'
       end
       Then 'can sign up' do
-        # expect(page).to have_content("Sign up")
+        expect(page).to have_content("Sign Up")
       end
       When 'register' do
         fill_in "user[email]", with: "a@a.com"
         fill_in "user[password]", with: "password"
         fill_in "user[password_confirmation]", with: "password"
-        click_button 'Sign up'
+        click_button 'Sign Up'
       end
       Then 'I am a user' do
-        expect(page).to have_content("Chuong Care Dashboard")
+        expect(page).to have_content("Dashboard")
       end
     end
   end
@@ -40,7 +40,7 @@ RSpec.describe "Home", type: :feature, js: true do
         create_user_in_ui("b@b.com")
       end
       When 'I sign in' do
-        click_link 'Sign In'
+        click_button 'Sign In'
         fill_in "user[email]", with: "b@b.com"
         fill_in "user[password]", with: "password"
         click_button 'Log in'

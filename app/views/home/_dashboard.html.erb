@@ -22,17 +22,48 @@
     </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       <h1 class="page-header">Dashboard</h1>
-      <h3>Your Care Receivers</h3>
-      <% if current_user.care_receivers.count > 0 %>
-        <% current_user.care_receivers.each do |care_receiver| %>
+      <section>
+        <h3>Your Care Receivers</h3>
+        <% if current_user.care_receivers.count > 0 %>
+          <% current_user.care_receivers.each do |care_receiver| %>
           <p><%= link_to "#{care_receiver.full_name}", care_receiver %></p>
+          <% end %>
         <% end %>
-      <% end %>
-      <p><%= link_to '+ Add Care Receiver?', new_care_receiver_path %></p>
+        <p><%= link_to '+ Add Care Receiver?', new_care_receiver_path %></p>
+      </section>
 
-      <% if current_user.care_receivers.count > 0 %>
-        <h3><%= current_user.care_receivers.first.first_name + " " + current_user.care_receivers.first.last_name  %>'s Daily Stats</h3>
-      <% end %>
+      <section>
+        <% if current_user.care_receivers.count > 0 %>
+          <% current_user.care_receivers.each do |care_receiver| %>
+            <h3><%= care_receiver.full_name  %>'s Daily Stats</h3>
+            <table class="table">
+              <thead class="thead-default">
+                <tr>
+                  <th>Date</th>
+                  <th>Systolic BP</th>
+                  <th>Diastolic BP</th>
+                  <th>Heart Rate</th>
+                  <th>Recorded By</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% care_receiver.daily_records.each do |daily_record|%>
+                  <tr>
+                    <th scope="row"><%= daily_record.created_at.strftime("%m/%d/%Y") %></th>
+                    <td><%= daily_record.systolic_bp %></td>
+                    <td><%= daily_record.diastolic_bp %></td>
+                    <td><%= daily_record.heart_rate %></td>
+                    <td><%= daily_record.user.email %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+
+          <% end %>
+        <% end %>
+
+      </section>
+
 
     </div>
   </div>

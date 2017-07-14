@@ -1,6 +1,7 @@
 class CareReceiver < ApplicationRecord
   has_many :careships
   has_many :users, through: :careships
+  has_many :daily_records
 
   validates :first_name, presence: true
   validates :last_name, presence: true

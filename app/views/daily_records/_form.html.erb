@@ -1,0 +1,47 @@
+<%= form_with(model: daily_record, local: true) do |form| %>
+  <% if daily_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(daily_record.errors.count, "error") %> prohibited this daily_record from being saved:</h2>
+
+      <ul>
+      <% daily_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :systolic_bp %>
+    <%= form.number_field :systolic_bp, id: :daily_record_systolic_bp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :diastolic_bp %>
+    <%= form.number_field :diastolic_bp, id: :daily_record_diastolic_bp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :heart_rate %>
+    <%= form.number_field :heart_rate, id: :daily_record_heart_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :notes %>
+    <%= form.text_area :notes, id: :daily_record_notes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :care_receiver_id %>
+    <%= form.number_field :care_receiver_id, id: :daily_record_care_receiver_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id, id: :daily_record_user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

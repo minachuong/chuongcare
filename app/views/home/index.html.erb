@@ -4,7 +4,6 @@
   <div class="container">
     <div class="header">
       <ul class="nav nav-pills pull-right">
-        <p><%# link_to "Sign Up", new_user_registration_path %></p>
         <p><a href="" data-toggle="modal" data-target="#signUp" data-whatever="">Sign Up<a></p>
           <%= render "devise/registrations/new" %>
       </ul>
@@ -12,7 +11,7 @@
 
     <div class="jumbotron">
       <h1>Welcome to Chuong Care</h1>
-      <p class="lead">Do the things to make caring easier.</p>
+      <p class="lead">Where a little care goes a long way</p>
       <p><button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#logIn" data-whatever="">Sign In</button></p>
       <%= render "devise/sessions/new" %>
 

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Systolic bp:</strong>
+  <%= @daily_record.systolic_bp %>
+</p>
+
+<p>
+  <strong>Diastolic bp:</strong>
+  <%= @daily_record.diastolic_bp %>
+</p>
+
+<p>
+  <strong>Heart rate:</strong>
+  <%= @daily_record.heart_rate %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @daily_record.notes %>
+</p>
+
+<p>
+  <strong>Care receiver:</strong>
+  <%= @daily_record.care_receiver_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @daily_record.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_daily_record_path(@daily_record) %> |
+<%= link_to 'Back', daily_records_path %>
